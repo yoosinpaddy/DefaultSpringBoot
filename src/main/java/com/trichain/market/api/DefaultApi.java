@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
 import java.util.Optional;
+
 @Controller
 public class DefaultApi {
     private static final Logger LOG = LoggerFactory.getLogger(DefaultApi.class);
 
     @Autowired
     private DefaultRepository defaultRepository;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<?> getDoc() {
         LOG.info("==================== about to get  doc ");
@@ -35,7 +37,6 @@ public class DefaultApi {
         Optional<DefaultTable> defaultTable = defaultRepository.findById(id);
         return ResponseUtil.getOkResponse(defaultTable);
     }
-
 
 
 }
